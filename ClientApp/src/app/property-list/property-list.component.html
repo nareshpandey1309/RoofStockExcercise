@@ -1,0 +1,20 @@
+<table class="table ">
+    <tr>
+      <th>ID</th>
+      <th>Address</th>
+      <th>Year Built</th>
+      <th>Monthly Price</th>
+      <th>Monthly Rent</th>
+      <th>Gross Yield%</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor='let sample of propertiesData; let i=index;'>
+      <td>{{sample?.id}}</td>
+      <td>{{sample.address.address1}}, {{sample.address.city}}, {{sample.address.county}}, {{sample.address.state}} {{sample.address.zip}}</td>
+      <td>{{sample.physicalData?.yearBuilt}}</td>
+      <td>{{sample.financialData?.listPrice |currency:'USD':'symbol':'1.2-2'}}</td>
+      <td>{{sample.financialData?.monthlyRent|currency:'USD':'symbol':'1.2-2'}}</td>
+      <td>{{sample.grossYield | number:'1.2-2'}}%</td>
+      <td><button (click)="SaveRecord(sample?.id)">Save</button> </td>
+    </tr>
+  </table>
